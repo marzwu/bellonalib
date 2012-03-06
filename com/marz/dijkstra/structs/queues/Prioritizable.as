@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.queues
+package com.marz.dijkstra.structs.queues
 {
 	
 	public class Prioritizable

@@ -1,7 +1,7 @@
-package free.as3.component.controls
+package com.marz.control
 {
-	import com.adobe.utils.StringUtil;
-
+	import com.marz.string.StringUtil;
+	
 	import flash.display.DisplayObject;
 	import flash.text.StyleSheet;
 	import flash.text.TextFieldAutoSize;

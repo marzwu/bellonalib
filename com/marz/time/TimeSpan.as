@@ -1,4 +1,4 @@
-package com.adobe.utils
+package com.marz.time
 {
 	/**
 	 * 时间间隔，

@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.graphs
+package com.marz.dijkstra.structs.graphs
 {
 	
 	/**
@@ -10,7 +10,7 @@ package com.adobe.dijkstra.structs.graphs
 	 * 	- implement graph traversal algorithms
 	 */
 	
-	import com.adobe.dijkstra.structs.linkedlists.LinkedList;
+	import com.marz.dijkstra.structs.linkedlists.LinkedList;
 	
 	public class Graph
 	{

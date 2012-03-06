@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.iterators
+package com.marz.dijkstra.structs.iterators
 {
 	
 	/**

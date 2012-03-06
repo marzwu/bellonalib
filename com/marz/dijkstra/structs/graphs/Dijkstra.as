@@ -1,12 +1,12 @@
-package com.adobe.dijkstra.structs.graphs
+package com.marz.dijkstra.structs.graphs
 {
 	/**
 	 * Dijkstra's algorithm class
 	 * version: 0.1.3
 	 */
 	 
-	import com.adobe.dijkstra.structs.linkedlists.ListNode;
-	import com.adobe.dijkstra.structs.queues.PriorityQueue;
+	import com.marz.dijkstra.structs.linkedlists.ListNode;
+	import com.marz.dijkstra.structs.queues.PriorityQueue;
 
 	public class Dijkstra
 	{

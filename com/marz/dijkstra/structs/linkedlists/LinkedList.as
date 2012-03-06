@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.linkedlists
+package com.marz.dijkstra.structs.linkedlists
 {
 	
 	/**
@@ -10,7 +10,7 @@ package com.adobe.dijkstra.structs.linkedlists
 	 * 		- insertion sort
 	 */
 	
-	import com.adobe.dijkstra.structs.collections.ICollection;
+	import com.marz.dijkstra.structs.collections.ICollection;
 	
 	public class LinkedList implements ICollection
 	{

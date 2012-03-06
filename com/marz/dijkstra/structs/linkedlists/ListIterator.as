@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.linkedlists
+package com.marz.dijkstra.structs.linkedlists
 {
 	
 	/**
@@ -7,7 +7,7 @@ package com.adobe.dijkstra.structs.linkedlists
 	 * version: 0.1
 	 */
 	
-	import com.adobe.dijkstra.structs.iterators.IIterator;
+	import com.marz.dijkstra.structs.iterators.IIterator;
 	
 	public class ListIterator implements IIterator
 	{

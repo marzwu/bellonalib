@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.collections
+package com.marz.dijkstra.structs.collections
 {
 	
 	/**

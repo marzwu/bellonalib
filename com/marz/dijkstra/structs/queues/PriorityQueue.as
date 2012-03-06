@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.queues
+package com.marz.dijkstra.structs.queues
 {
 	
 	/**
@@ -9,8 +9,8 @@ package com.adobe.dijkstra.structs.queues
 	 * 	- implement Dictionary
 	 */
 	
-	import com.adobe.dijkstra.structs.collections.ICollection;
-	import com.adobe.dijkstra.structs.graphs.Vertex;
+	import com.marz.dijkstra.structs.collections.ICollection;
+	import com.marz.dijkstra.structs.graphs.Vertex;
 	
 	public class PriorityQueue implements ICollection
 	{

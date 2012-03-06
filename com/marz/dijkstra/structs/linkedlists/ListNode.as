@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.linkedlists
+package com.marz.dijkstra.structs.linkedlists
 {
 	
 	/**

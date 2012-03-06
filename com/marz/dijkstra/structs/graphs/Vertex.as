@@ -1,4 +1,4 @@
-package com.adobe.dijkstra.structs.graphs
+package com.marz.dijkstra.structs.graphs
 {
 	
 	/**
@@ -8,7 +8,7 @@ package com.adobe.dijkstra.structs.graphs
 	
 	import __AS3__.vec.Vector;
 	
-	import com.adobe.dijkstra.structs.queues.Prioritizable;
+	import com.marz.dijkstra.structs.queues.Prioritizable;
 	
 	public class Vertex extends Prioritizable
 	{
