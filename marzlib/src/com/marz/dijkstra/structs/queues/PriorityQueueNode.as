@@ -1,4 +1,4 @@
-package com.signalsondisplay.datastructures.queues
+package com.marz.dijkstra.structs.queues
 {
 	
 	/**
@@ -8,8 +8,6 @@ package com.signalsondisplay.datastructures.queues
 	
 	public class PriorityQueueNode extends Prioritizable
 	{
-		
-		private var _priority:int;
 		private var _name:String;
 		
 		public function PriorityQueueNode( priority:int = 0, name:String = "" )
@@ -23,12 +21,12 @@ package com.signalsondisplay.datastructures.queues
 			return _name;
 		}
 
-		public function get priority():int
+		override public function get priority():int
 		{
 			return _priority;
 		}
 		
-		public function set priority( priority:int ):void
+		override public function set priority( priority:int ):void
 		{
 			_priority = priority;
 		}

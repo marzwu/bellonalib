@@ -323,5 +323,9 @@ package com.marz.string
 			}
 			return result;
 		}
+		
+		public static function sortByLogical(strs:Vector.<String>):Vector.<String>{
+			return null;
+		}
 	}
 }

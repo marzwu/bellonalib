@@ -1,4 +1,4 @@
-package com.signalsondisplay.datastructures.queues
+package com.marz.dijkstra.structs.queues
 {
 	
 	public interface IPrioritizable
