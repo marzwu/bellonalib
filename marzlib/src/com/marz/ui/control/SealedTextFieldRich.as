@@ -1,4 +1,4 @@
-package com.marz.control
+package com.marz.ui.control
 {
 	import com.marz.string.StringUtil;
 	

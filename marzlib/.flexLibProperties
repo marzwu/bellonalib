@@ -2,6 +2,7 @@
 <flexLibProperties includeAllClasses="true" useMultiPlatformConfig="false" version="3">
   <includeClasses>
     <classEntry path="com.marz.string.StringSorter"/>
+    <classEntry path="com.marz.ui.control.base.Component"/>
   </includeClasses>
   <includeResources/>
   <namespaceManifests/>
