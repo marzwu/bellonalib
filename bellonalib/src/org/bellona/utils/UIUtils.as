@@ -154,5 +154,21 @@ package org.bellona.utils {
 					break;
 			}
 		}
+
+		public static function isOrIsParent(dis:DisplayObject, target:DisplayObject):void{
+			if(dis == null){
+				return false;
+			}
+
+			while(true){
+				if(dis == target){
+					return true;
+				}
+				dis = dis.parent;
+			}
+
+			return false;
+		}
+
 	}
 }
