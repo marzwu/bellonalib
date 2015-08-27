@@ -156,7 +156,7 @@ package org.bellona.utils {
 		}
 
 		/**判断是否是显示对象，或者父对象是比较的显示对象*/
-		public static function isOrParentIs(dis:DisplayObject, target:DisplayObject):void{
+		public static function isOrParentIs(dis:DisplayObject, target:DisplayObject):Boolean{
 			if(dis == null){
 				return false;
 			}
