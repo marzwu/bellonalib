@@ -3,6 +3,8 @@ package org.bellona.utils {
 	import flash.display.Stage;
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
+	import flash.text.TextField;
+	import flash.text.TextFieldAutoSize;
 	
 	/**
 	 * UI的一些方便的方法
@@ -13,6 +15,7 @@ package org.bellona.utils {
 		public static const TOP:String = 'top';
 		public static const LEFT:String = 'left';
 		public static const BOTTOM:String = 'bottom';
+		
 		/**
 		 * 定位到父容器的中间
 		 * @param src
@@ -40,19 +43,16 @@ package org.bellona.utils {
 			self.y = 0 + ((stage.stageHeight - self.height) >> 1);
 		}
 		
-		public static function getStagePos(dis:DisplayObject, offset:Point):Point
-		{
+		public static function getStagePos(dis:DisplayObject, offset:Point):Point {
 			var global:Point = dis.localToGlobal(offset);
 			return global;
 		}
 		
-		public static function setToStagePos(dis:DisplayObject, des:Point):void
-		{
+		public static function setToStagePos(dis:DisplayObject, des:Point):void {
 			var pos:Point = dis.parent.globalToLocal(des);
 			dis.x = pos.x;
 			dis.y = pos.y;
 		}
-		
 		
 		/**
 		 * 定位到des的右侧
@@ -85,9 +85,9 @@ package org.bellona.utils {
 		}
 		
 		public static function horizontalCenterTo(self:DisplayObject, des:DisplayObject):void {
-			if(des is Stage){
+			if (des is Stage) {
 				self.x = ((des as Stage).stageWidth - self.width) >> 1;
-			}else{
+			} else {
 				self.x = des.x + ((des.width - self.width) >> 1);
 			}
 		}
@@ -98,6 +98,50 @@ package org.bellona.utils {
 		
 		public static function horizontalCenterToParent(self:DisplayObject):void {
 			self.x = ((self.parent.width - self.width) >> 1);
+		}
+		
+		public static function horizontalCenterTextsTo(texts:Vector.<TextField>, refer:*):void {
+			var box:Rectangle = null;
+			var text:TextField = null;
+			
+			for each (text in texts) {
+				var bounds:Rectangle = text.getBounds(text.parent);
+				if (box == null) {
+					box = bounds;
+				} else {
+					box = bounds.union(box);
+				}
+			}
+			
+			var marginLeft:int = int.MAX_VALUE;
+			var marginRight:int = int.MAX_VALUE;
+			for each (text in texts) {
+				var leftToBox:Number = text.x - box.x;
+				var rightToBox:Number = (box.x + box.width) - (text.x + text.width);
+				switch (text.autoSize) {
+					case TextFieldAutoSize.LEFT:
+					case TextFieldAutoSize.NONE:
+						marginLeft = Math.min(marginLeft, leftToBox);
+						marginRight = Math.min(marginRight, text.width - text.textWidth + rightToBox);
+						break;
+					case TextFieldAutoSize.CENTER:
+						marginLeft = Math.min(marginLeft, leftToBox + ((text.width - text.textWidth) >> 1));
+						marginRight = Math.min(marginRight, ((text.width - text.textWidth) >> 1) + rightToBox);
+						break;
+					case TextFieldAutoSize.RIGHT:
+						marginLeft = Math.min(marginLeft, leftToBox + text.width - text.textWidth);
+						marginRight = Math.min(marginRight, rightToBox);
+					default:
+						break;
+				}
+			}
+			
+			var offset:Number = refer.x + ((refer.width - (box.width - marginLeft - marginRight)) >> 1);
+			offset -= box.x + marginLeft;
+			
+			for each (text in texts) {
+				text.x += offset;
+			}
 		}
 		
 		public static function removeFromParent(self:DisplayObject):void {
@@ -124,8 +168,7 @@ package org.bellona.utils {
 			setPivotY(self, self.height >> 1);
 		}
 		
-		public static function swapPos(dis1:DisplayObject, dis2:DisplayObject):void
-		{
+		public static function swapPos(dis1:DisplayObject, dis2:DisplayObject):void {
 			var x:Number = dis1.x;
 			var y:Number = dis1.y;
 			dis1.x = dis2.x;
@@ -134,10 +177,8 @@ package org.bellona.utils {
 			dis2.y = y;
 		}
 		
-		public static function align(src:DisplayObject, refer:DisplayObject, pos:String):void
-		{
-			switch(pos)
-			{
+		public static function align(src:DisplayObject, refer:DisplayObject, pos:String):void {
+			switch (pos) {
 				case LEFT:
 					src.x = refer.x;
 					break;
@@ -154,18 +195,20 @@ package org.bellona.utils {
 					break;
 			}
 		}
-
+		
 		/**判断是否是显示对象，或者父对象是比较的显示对象*/
-		public static function isOrParentIs(dis:DisplayObject, target:DisplayObject):Boolean{
-			while(dis){
-				if(dis == target){
+		public static function isOrParentIs(dis:DisplayObject, target:DisplayObject):Boolean {
+			while (dis) {
+				if (dis == target) {
 					return true;
 				}
 				dis = dis.parent;
 			}
-
+			
 			return false;
 		}
-
+		
 	}
 }
+import app.utils;
+
