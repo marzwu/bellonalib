@@ -39,8 +39,13 @@ package org.bellona.utils {
 		}
 		
 		public static function centerToStage(self:DisplayObject, stage:Stage):void {
-			self.x = 0 + ((stage.stageWidth - self.width) >> 1);
-			self.y = 0 + ((stage.stageHeight - self.height) >> 1);
+			var point:Point = new Point();
+			point.x = ((stage.stageWidth - self.width) >> 1);
+			point.y = ((stage.stageHeight - self.height) >> 1);
+			
+			point = self.parent.globalToLocal(point);
+			self.x = point.x;
+			self.y = point.y;
 		}
 		
 		public static function getStagePos(dis:DisplayObject, offset:Point):Point {
@@ -80,11 +85,17 @@ package org.bellona.utils {
 		 * @param des 与src坐标系相同
 		 *
 		 */
-		public static function verticalMiddleTo(self:DisplayObject, des:DisplayObject):void {
+		public static function verticalMiddleTo(self:DisplayObject, des:*):void {
 			self.y = des.y + ((des.height - self.height) >> 1);
 		}
 		
-		public static function horizontalCenterTo(self:DisplayObject, des:DisplayObject):void {
+		/**
+		 * 与des横向居中对齐
+		 * @param self
+		 * @param des
+		 *
+		 */
+		public static function horizontalCenterTo(self:DisplayObject, des:*):void {
 			if (des is Stage) {
 				self.x = ((des as Stage).stageWidth - self.width) >> 1;
 			} else {
@@ -92,14 +103,30 @@ package org.bellona.utils {
 			}
 		}
 		
+		/**
+		 * 纵向将对象居中
+		 * @param self
+		 *
+		 */
 		public static function verticalMiddleToParent(self:DisplayObject):void {
 			self.y = ((self.parent.height - self.height) >> 1);
 		}
 		
+		/**
+		 * 横向将对象居中
+		 * @param self
+		 *
+		 */
 		public static function horizontalCenterToParent(self:DisplayObject):void {
 			self.x = ((self.parent.width - self.width) >> 1);
 		}
 		
+		/**
+		 * 文本组横向居中
+		 * @param texts
+		 * @param refer
+		 *
+		 */
 		public static function horizontalCenterTextsTo(texts:Vector.<TextField>, refer:*):void {
 			var box:Rectangle = null;
 			var text:TextField = null;
@@ -142,6 +169,16 @@ package org.bellona.utils {
 			for each (text in texts) {
 				text.x += offset;
 			}
+		}
+		
+		/**
+		 * 将文本纵向与目标居中对齐
+		 * @param tf
+		 * @param refer
+		 *
+		 */
+		public function verticalCentralText(tf:TextField, refer:DisplayObject):void {
+			tf.y = refer.y + ((refer.height - (tf.textHeight + 4)) >> 1);
 		}
 		
 		public static function removeFromParent(self:DisplayObject):void {
@@ -208,7 +245,26 @@ package org.bellona.utils {
 			return false;
 		}
 		
+		public static function makeGapEqual(disArr:Array, refer:DisplayObject):void {
+			var sum:int = 0;
+			for each (var dis:DisplayObject in disArr) {
+				sum += dis.width;
+			}
+			
+			var gap:Number = (refer.width - sum) / (disArr.length + 1);
+			
+			var start:Number = refer.x + gap;
+			for (var i:int = 0; i < disArr.length; i++) {
+				dis = disArr[i];
+				dis.x = start;
+				start += dis.width + gap;
+			}
+		}
+		
+		public static function setVisible(disArr:Array, visible:Boolean):void {
+			for each (var i:DisplayObject in disArr) {
+				i.visible = visible;
+			}
+		}
 	}
 }
-
-
